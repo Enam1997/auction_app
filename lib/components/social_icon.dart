@@ -5,12 +5,11 @@ import '../../../constants.dart';
 
 class SocalIcon extends StatelessWidget {
   final String iconSrc;
-  final Function press;
+  final Function() press;
   const SocalIcon({
-    Key key,
-    this.iconSrc,
-    this.press,
-  }) : super(key: key);
+    required this.iconSrc,
+    required this.press,
+  }) ;
 
   @override
   Widget build(BuildContext context) {
