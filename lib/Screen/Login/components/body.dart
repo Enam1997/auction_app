@@ -1,5 +1,5 @@
+import 'package:auction_app/Screen/Home/home_screen.dart';
 import 'package:auction_app/Screen/Login/components/background.dart';
-import 'package:auction_app/Screen/Profile/profile_screen.dart';
 import 'package:auction_app/Screen/Signup/signup_screen.dart';
 import 'package:auction_app/components/already_have_an_account_acheck.dart';
 import 'package:auction_app/components/or_divider.dart';
@@ -82,8 +82,7 @@ class Body extends StatelessWidget {
                       if (user != null) {
                         Navigator.of(context).pushReplacement(
                           MaterialPageRoute(
-                            builder: (context) => ProfileScreen(
-                            ),
+                            builder: (context) => HomeScreen(),
                           ),
                         );
                       }
