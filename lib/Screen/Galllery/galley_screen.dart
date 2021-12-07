@@ -46,7 +46,7 @@ class _HomeScreenState extends State<GalleryScreen> {
               scrollDirection: Axis.vertical,
               itemCount: items.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 1, childAspectRatio: 1),
+                  crossAxisCount: 2, childAspectRatio: 1),
               itemBuilder: (_, index) {
                 return Padding(
                   padding: const EdgeInsets.all(3.0),
