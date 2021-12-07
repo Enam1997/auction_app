@@ -65,7 +65,7 @@ class _HomeScreenState extends State<GalleryScreen> {
                         // ),
                         AspectRatio(
                             aspectRatio: 2,
-                            child: Image.network(items[index]["imageURL"].toString())
+                            child: Image.network("${items[index]["imageURL"].toString()}",fit: BoxFit.fitWidth,)
                           // Image.asset(
                             //   'assets/images/dumy.jpg',
                             //   fit: BoxFit.fitWidth,
