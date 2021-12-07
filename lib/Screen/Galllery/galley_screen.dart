@@ -1,3 +1,4 @@
+import 'package:auction_app/Screen/ProductDetails/product_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -51,97 +52,67 @@ class _HomeScreenState extends State<GalleryScreen> {
                 return Padding(
                   padding: const EdgeInsets.all(3.0),
                   child: Card(
+
                     clipBehavior: Clip.antiAlias,
                     color: itemCardColor,
                     elevation: 16,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        // AspectRatio(aspectRatio: 2, child: Image.network(items[index]["imageURL"][0],
-                        //   fit: BoxFit.fitHeight,
-                        // ),
-                        // ),
-                        AspectRatio(
-                            aspectRatio: 2,
-                            child: Image.network("${items[index]["imageURL"].toString()}",fit: BoxFit.fitWidth,)
-                          // Image.asset(
-                            //   'assets/images/dumy.jpg',
-                            //   fit: BoxFit.fitWidth,
-                            // )
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(5.0),
-
-                          child: Text(
-                            "${items[index]["title"]}",
-                            style: TextStyle(color: textColor1.withOpacity(1.0),
-                                fontWeight: FontWeight.bold,
-                                fontSize: 25
-                            ),
+                    child: InkWell(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (_)=>ProductDetails(items[index])));
+                      },
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // AspectRatio(aspectRatio: 2, child: Image.network(items[index]["imageURL"][0],
+                          //   fit: BoxFit.fitHeight,
+                          // ),
+                          // ),
+                          AspectRatio(
+                              aspectRatio: 2,
+                              child: Image.network("${items[index]["imageURL"].toString()}",fit: BoxFit.fitWidth,)
                           ),
-                        ),
-                        Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(5.0),
-                              child: Text("Min Bid: "
-                                  "${items[index]["price"].toString()}"" Tk",
-                                style: TextStyle(color: textColor1),
+                          Padding(
+                            padding: const EdgeInsets.all(5.0),
+
+                            child: Text(
+                              "${items[index]["title"]}",
+                              style: TextStyle(color: textColor1.withOpacity(1.0),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 25
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(5.0),
-                              child: Text("Quantity : "
-                                  "${items[index]["quantity"].toString()}",
-                                style: TextStyle(color: textColor1),
-                              ),
-                            )
-                          ],
-                        )
-                        ,
-                        Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: Text("Bid End : "
-                              "07/11/2021",
-                            style: TextStyle(color: textColor1),
                           ),
-                        ),
-                        ButtonBar(
-                          children: [
-                            ElevatedButton(
-                              child: Text('Favourite'),
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                  primary: itemInsideFlutButtonColor,
-                                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                                  textStyle: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold)),
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Text("Min Bid: "
+                                    "${items[index]["price"].toString()}"" Tk",
+                                  style: TextStyle(color: textColor1),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Text("Quantity : "
+                                    "${items[index]["quantity"].toString()}",
+                                  style: TextStyle(color: textColor1),
+                                ),
+                              )
+                            ],
+                          )
+                          ,
+                          Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Text("Bid End : "
+                                "07/11/2021",
+                              style: TextStyle(color: textColor1),
                             ),
-                            ElevatedButton(
-                              child: Text('Bid'),
-                              onPressed: () {
-                                // Navigator.push(context, MaterialPageRoute(builder: (_)=>ProductDetails(items[index])));
-                              },
-                              style: ElevatedButton.styleFrom(
-                                  primary: itemInsideFlutButtonColor,
-                                  padding: EdgeInsets.symmetric(horizontal: 60, vertical: 10),
-                                  textStyle: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold)),
-                            ),
-
-                            // FlatButton(
-                            //   color: CustomColors.itemInsideFlutButtonColor,
-                            //   child: const Text('Bid'),
-                            //   onPressed: () {/* ... */},
-                            // )
-                          ],
-                        )
-                      ],
-                    ),
+                          ),
+                        ],
+                      ),
+                    )
                   ),
                 )
                 //
