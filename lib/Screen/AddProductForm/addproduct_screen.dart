@@ -76,6 +76,7 @@ class _AddProoductScreenState extends State<AddProoductScreen> {
                     TextFormField(
                       maxLines: 5,
                       minLines: 2,
+                      cursorColor: kPrimaryColor,
                       style: TextStyle(
                           color: textColor1
                       ),
@@ -98,7 +99,7 @@ class _AddProoductScreenState extends State<AddProoductScreen> {
                           ),
                           enabledBorder: const OutlineInputBorder(
                             // width: 0.0 produces a thin "hairline" border
-                            borderSide: const BorderSide(color: Colors.lightBlueAccent, width: 0.0,),
+                            borderSide: const BorderSide(color: kPrimaryColor, width: 0.0,),
                             borderRadius: BorderRadius.all(Radius.circular(15.0),),
                           ),
                           border: OutlineInputBorder(
@@ -138,7 +139,7 @@ class _AddProoductScreenState extends State<AddProoductScreen> {
                           ),
                           enabledBorder: const OutlineInputBorder(
                             // width: 0.0 produces a thin "hairline" border
-                            borderSide: const BorderSide(color: Colors.lightBlueAccent, width: 0.0,),
+                            borderSide: const BorderSide(color: kPrimaryColor, width: 0.0,),
                             borderRadius: BorderRadius.all(Radius.circular(15.0),),
                           ),
                           border: OutlineInputBorder(
@@ -171,7 +172,7 @@ class _AddProoductScreenState extends State<AddProoductScreen> {
                           ),
                           enabledBorder: const OutlineInputBorder(
                             // width: 0.0 produces a thin "hairline" border
-                            borderSide: const BorderSide(color: Colors.lightBlueAccent, width: 0.0,),
+                            borderSide: const BorderSide(color: kPrimaryColor, width: 0.0,),
                             borderRadius: BorderRadius.all(Radius.circular(15.0),),
                           ),
                           border: OutlineInputBorder(
@@ -205,7 +206,7 @@ class _AddProoductScreenState extends State<AddProoductScreen> {
                           ),
                           enabledBorder: const OutlineInputBorder(
                             // width: 0.0 produces a thin "hairline" border
-                            borderSide: const BorderSide(color: Colors.lightBlueAccent, width: 0.0,),
+                            borderSide: const BorderSide(color: kPrimaryColor, width: 0.0,),
                             borderRadius: BorderRadius.all(Radius.circular(15.0),),
                           ),
                           border: OutlineInputBorder(
@@ -216,8 +217,8 @@ class _AddProoductScreenState extends State<AddProoductScreen> {
                     SizedBox(height: 10,),
                     ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            primary: Colors.redAccent,
-                            side: BorderSide(width:3, color:Colors.brown),
+                            primary: kPrimaryColor,
+                            side: BorderSide(width:3, color:Colors.red),
                             elevation: 3,
                             padding: EdgeInsets.all(20),
                             shape: RoundedRectangleBorder(
