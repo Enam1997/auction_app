@@ -77,7 +77,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             Text(
               'Hello',
               style: TextStyle(
-                color: Colors.white,
+                color: textColor1,
                 fontSize: 26,
               ),
             ),
@@ -85,7 +85,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             Text(
               user.displayName!,
               style: TextStyle(
-                color: Colors.white,
+                color: textColor1,
                 fontSize: 26,
               ),
             ),
@@ -93,7 +93,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             Text(
               '( ${user.email!} )',
               style: TextStyle(
-                color: Colors.white,
+                color: textColor1,
                 fontSize: 20,
                 letterSpacing: 0.5,
               ),
@@ -102,14 +102,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
             Text(
               'You are now signed in using your Google account. To sign out of your account, click the "Sign Out" button below.',
               style: TextStyle(
-                  color: Colors.white.withOpacity(0.8),
+                  color: textColor1.withOpacity(0.8),
                   fontSize: 14,
                   letterSpacing: 0.2),
             ),
             SizedBox(height: 16.0),
             _isSigningOut
                 ? CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+              valueColor: AlwaysStoppedAnimation<Color>(textColor1),
             )
                 : ElevatedButton(
               style: ButtonStyle(

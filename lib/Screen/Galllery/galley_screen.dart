@@ -84,30 +84,26 @@ class _HomeScreenState extends State<GalleryScreen> {
                               ),
                             ),
                           ),
-                          Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(5.0),
-                                child: Text("Min Bid: "
-                                    "${items[index]["price"].toString()}"" Tk",
-                                  style: TextStyle(color: textColor1),
+                          Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Text("Min Bid: "
+                                "${items[index]["price"].toString()}"" Tk",
+                              style: TextStyle(color: textColor1, fontSize: 15),
                                 ),
-                              ),
-                              Padding(
+                          ),
+                          Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Text("Quantity : "
                                     "${items[index]["quantity"].toString()}",
-                                  style: TextStyle(color: textColor1),
+                                  style: TextStyle(color: textColor1, fontSize: 15),
                                 ),
                               )
-                            ],
-                          )
                           ,
                           Padding(
                             padding: const EdgeInsets.all(5.0),
                             child: Text("Bid End : "
                                 "07/11/2021",
-                              style: TextStyle(color: textColor1),
+                              style: TextStyle(color: textColor1, fontSize: 15),
                             ),
                           ),
                         ],

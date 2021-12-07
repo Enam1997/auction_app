@@ -17,7 +17,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
 import '../../constants.dart';
 
 class AddProoductScreen extends StatefulWidget {
@@ -33,7 +32,7 @@ class _AddProoductScreenState extends State<AddProoductScreen> {
   final itemDescriptionController = TextEditingController();
   final itemPriceController = TextEditingController();
   final itemQuantityController = TextEditingController();
-  final imageURL = "https://www.google.com/search?q=dummy+product+image&tbm=isch&ved=2ahUKEwi3xP6Ph4T0AhULXCsKHcP3C_8Q2-cCegQIABAA&oq=dummy+product+image&gs_lcp=CgNpbWcQAzIFCAAQgAQyBQgAEIAEMgYIABAIEB4yBAgAEBg6BwgjEO8DECc6BAgAEEM6BggAEAcQHjoICAAQBxAFEB46CAgAEAgQBxAeUNYIWPUZYM8faABwAHgAgAF-iAG8B5IBAzEuOJgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=rZ-GYfe5KIu4rQHD76_4Dw&rlz=1C1CHBD_enBD868BD868#imgrc=ZQHHESFcELOS_M";
+  final imageURL = "https://picsum.photos/200";
 
   Future addData() async{
     final db =FirebaseFirestore.instance.collection("Items").add({
@@ -53,6 +52,7 @@ class _AddProoductScreenState extends State<AddProoductScreen> {
   }
 
 
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -67,10 +67,12 @@ class _AddProoductScreenState extends State<AddProoductScreen> {
                 child: ListView(
                   children: [
                     Container(
-                      child: CircleAvatar(
-                        backgroundImage: AssetImage('assets/images/dumy.jpg'),
-                        radius: 100.0,
-                      ),
+                      child: InkWell(
+                        child: CircleAvatar(
+                          radius: 100,
+                          backgroundImage: NetworkImage("null"),
+                        ),
+                      )
                     ),
                     SizedBox(height: 30,),
                     TextFormField(

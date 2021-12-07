@@ -4,6 +4,7 @@ import 'package:auction_app/Screen/Analytics/analytics_screen.dart';
 import 'package:auction_app/Screen/Dashbord/dashbord_screen.dart';
 import 'package:auction_app/Screen/Galllery/galley_screen.dart';
 import 'package:auction_app/Screen/Profile/profile_screen.dart';
+import 'package:auction_app/components/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants.dart';
@@ -25,6 +26,10 @@ class _HomePageScreenState extends State<HomeScreen>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppBar(
+        title: "Auction",
+        backGroundColor: appBarColor,
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         items: [
