@@ -19,6 +19,7 @@ class _HomeScreenState extends State<GalleryScreen> {
       for (int i = 0; i < qn.docs.length; i++) {
         items.add(
             {
+              "documentId": qn.docs[i].id,
               "userEmail": qn.docs[i]["userEmail"],
               "title": qn.docs[i]["title"],
               "price": qn.docs[i]["price"],
@@ -105,7 +106,8 @@ class _HomeScreenState extends State<GalleryScreen> {
                                 "07/11/2021",
                               style: TextStyle(color: textColor1, fontSize: 15),
                             ),
-                          ),
+                          )
+
                         ],
                       ),
                     )

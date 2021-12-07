@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants.dart';
@@ -10,8 +12,22 @@ class ProductDetails extends StatefulWidget {
 }
 
 class _ProductDetailsState extends State<ProductDetails> {
+  final _user  = FirebaseAuth.instance.currentUser;
   final itemPriceController = TextEditingController();
   final _keyForm = GlobalKey<FormState>();
+
+  Future addBid() async{
+    final db =FirebaseFirestore.instance.collection('Items').doc(widget._product['documentId']).collection('Bid').add({
+      'price': itemPriceController.text,
+      'userEmail': _user!.email,
+    });
+    print("data add Complete");
+  }
+
+  void initState() {
+
+    super.initState();
+  }
 
 
   @override
@@ -26,13 +42,23 @@ class _ProductDetailsState extends State<ProductDetails> {
                 AspectRatio(
                     aspectRatio: 2,
                     child: Image.network(widget._product['imageURL'],fit: BoxFit.fitWidth,)
-      ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
                 Text(
                   widget._product['title'],
-                  style: TextStyle(color: textColor1, fontWeight: FontWeight.bold, fontSize: 25),
+                  style: TextStyle(color: textColor1, fontWeight: FontWeight.bold, fontSize: 30),
                 ),
                 Text(widget._product['desc'],
                   style: TextStyle(color: textColor1, fontWeight: FontWeight.bold, fontSize: 10),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text("Bid End : "
+                    "07/11/2021",
+                  style: TextStyle(color: textColor1, fontSize: 15),
                 ),
                 SizedBox(
                   height: 10,
@@ -87,16 +113,27 @@ class _ProductDetailsState extends State<ProductDetails> {
                   width: 200,
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () {
-                      final isValid = _keyForm.currentState!.validate();
-                      if (!isValid==true) {
-                        print("Please Input Something ");
-                      }
-                      else
-                      {
-                      }
-                      _keyForm.currentState!.save();
+                    // onPressed: () {
+                    //   final isValid = _keyForm.currentState!.validate();
+                    //   if (!isValid==true) {
+                    //     print("Please Input Something ");
+                    //   }
+                    //   else
+                    //   {
+                    //     addBid().then((value){
+                    //       itemPriceController.clear();
+                    //     });
+                    //
+                    //   }
+                    //   _keyForm.currentState!.save();
+                    //
+                    // },
+                    onPressed: (){
+                      addBid().then((value) => {
+                        print("Bid Add"),
+                      itemPriceController.clear()
 
+                      });
                     },
                     child: Text(
                       "Bid",
