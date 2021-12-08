@@ -1,16 +1,29 @@
-# auction_app
+# auctionapp
 
-A new Flutter project.
+Auction App like eBay. Use firebase auth users can signin using their gmail account. After login, the user will see the auction item gallery, which shows the items everybody else has put up for auction. There a create/plus button in the menu that allows the user to create an auction item for everybody to see and interact with. If the user hits that button, a Screen Comes, which lets the user input Product Name, Product Description, Minimum Bid Price, and. When an auction item is created using this form, it shows up in the auction gallery of everybody else, and shows up in the “My posted items” menu for the posting user.
 
-## Getting Started
+# APK file
 
-This project is a starting point for a Flutter application.
+- main Root ( app-release.apk)
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+#  challenges faced
+
+For developing this app when i get the requirnment and i just start developing i dont plan this app properly, for this i faced probelem to add all feature under developing
+like.
+- Add Bid Data in Firebase
+- Null Pointer Exception
+    
+    
+
+# Requirnment
+- user can create account using gmail account
+- user can see post auction item in item gallery
+- user can bid any item from auction gallery
+- user can see bids list place by other user
+- user can see bids winner in the end of auction
+- user can post a item for auction
+- user can total number running bids
+- user can see total number of completed bids
+- user can see total value of completed bids
