@@ -13,6 +13,8 @@ class ProductDetails extends StatefulWidget {
 
 class _ProductDetailsState extends State<ProductDetails> {
   final _user  = FirebaseAuth.instance.currentUser;
+  var _fireStoreInstance = FirebaseFirestore.instance;
+  List bids = [];
   final itemPriceController = TextEditingController();
   final _keyForm = GlobalKey<FormState>();
 
@@ -20,13 +22,37 @@ class _ProductDetailsState extends State<ProductDetails> {
     final db =FirebaseFirestore.instance.collection('Items').doc(widget._product['documentId']).collection('Bid').add({
       'price': itemPriceController.text,
       'userEmail': _user!.email,
+      'userPhoto': _user!.photoURL,
+      'userName': _user!.displayName,
+
     });
     print("data add Complete");
+  }
+
+  fetchBid() async {
+    QuerySnapshot qn = await _fireStoreInstance.collection("Items").doc(widget._product['documentId']).collection('Bid').get();
+    setState(() {
+      for (int i = 0; i < qn.docs.length; i++) {
+        bids.add(
+            {
+              "documentId": qn.docs[i].id,
+              "userEmail": qn.docs[i]["userEmail"],
+              "price": qn.docs[i]["price"],
+              "userPhoto": qn.docs[i]["userPhoto"],
+              "userName": qn.docs[i]["userName"],
+
+
+            });
+      }
+    });
+
+    // return list;
   }
 
   void initState() {
 
     super.initState();
+    fetchBid();
   }
 
 
@@ -145,6 +171,69 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
                   ),
                 ),
+                Divider(),
+                SizedBox(
+                  height: 30,
+                ),
+                  Expanded(
+                    child: ListView.builder(
+                        scrollDirection: Axis.vertical,
+                        itemCount: bids.length,
+                        itemBuilder: (_, index) {
+                          return Padding(
+                            padding: const EdgeInsets.all(3.0),
+                            child: Card(
+
+                                clipBehavior: Clip.antiAlias,
+                                color: itemCardColor,
+                                elevation: 16,
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(5.0),
+
+                                        child: CircleAvatar(
+                                          backgroundImage: NetworkImage("${bids[index]["userPhoto"]}"),
+                                        )
+                                      ),
+                                      SizedBox(
+                                        height: 20,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(5.0),
+
+                                        child: Text(
+                                          "${bids[index]["userName"]}",
+                                          style: TextStyle(color: textColor1.withOpacity(1.0),
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 25
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 30,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(5.0),
+                                        child: Text(
+                                            "${bids[index]["price"].toString()}"" Tk",
+                                          style: TextStyle(color: textColor1, fontSize: 25),
+                                        ),
+                                      ),
+
+                                    ],
+                                  ),
+                            ),
+                          )
+                          //
+                              ;
+                        }),
+                  ),
+
+
 
               ],
             ),
