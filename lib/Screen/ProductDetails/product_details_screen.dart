@@ -62,182 +62,187 @@ class _ProductDetailsState extends State<ProductDetails> {
       body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.only(left: 12, right: 12, top: 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                AspectRatio(
-                    aspectRatio: 2,
-                    child: Image.network(widget._product['imageURL'],fit: BoxFit.fitWidth,)
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  widget._product['title'],
-                  style: TextStyle(color: textColor1, fontWeight: FontWeight.bold, fontSize: 30),
-                ),
-                Text(widget._product['desc'],
-                  style: TextStyle(color: textColor1, fontWeight: FontWeight.bold, fontSize: 10),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text("Bid End : "
-                    "07/11/2021",
-                  style: TextStyle(color: textColor1, fontSize: 15),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  "Min: " "${widget._product['price'].toString()}" " Tk",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 30, color: Colors.red),
-                ),
-                Divider(),
-                TextFormField(
-                  maxLines: 5,
-                  minLines: 2,
-                  style: TextStyle(
-                      color: textColor1
-                  ),
-                  controller: itemPriceController,
-                  keyboardType: TextInputType.number,
-                  textInputAction: TextInputAction.next,
-                  //maxLength: 11,
-                  validator: (value){
-                    if(value == null || value.isEmpty){
-                      return 'Please Enter Amount';
-                    }else{
-                      /*if(value < Min price ){
-                          return null;
-                        }else{
-                          return 'Please Getter Then minimum price ';
-                        }*/
-
-                      return null;
-                    }
-                  },
-                  decoration: InputDecoration(
-                      hintText: 'Enter Ammount',
-                      hintStyle: TextStyle(
-                          fontSize: 18,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    AspectRatio(
+                        aspectRatio: 3,
+                        child: Image.network(widget._product['imageURL'],fit: BoxFit.fitWidth,)
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      widget._product['title'],
+                      style: TextStyle(color: textColor1, fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
+                    Text(widget._product['desc'],
+                      style: TextStyle(color: textColor1, fontWeight: FontWeight.bold, fontSize: 10),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text("Bid End : "
+                        "07/11/2021",
+                      style: TextStyle(color: textColor1, fontSize: 10),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      "Min: " "${widget._product['price'].toString()}" " Tk",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 15, color: Colors.red),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    TextFormField(
+                      maxLines: 1,
+                      minLines: 1,
+                      style: TextStyle(
                           color: textColor1
                       ),
-                      enabledBorder: const OutlineInputBorder(
-                        // width: 0.0 produces a thin "hairline" border
-                        borderSide: const BorderSide(color: Colors.lightBlueAccent, width: 0.0,),
-                        borderRadius: BorderRadius.all(Radius.circular(15.0),),
-                      ),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(15.0))
-                      )
-                  ),
-                ),
-                Divider(),
-                SizedBox(
-                  width: 200,
-                  height: 50,
-                  child: ElevatedButton(
-                    // onPressed: () {
-                    //   final isValid = _keyForm.currentState!.validate();
-                    //   if (!isValid==true) {
-                    //     print("Please Input Something ");
-                    //   }
-                    //   else
-                    //   {
-                    //     addBid().then((value){
-                    //       itemPriceController.clear();
-                    //     });
-                    //
-                    //   }
-                    //   _keyForm.currentState!.save();
-                    //
-                    // },
-                    onPressed: (){
-                      addBid().then((value) => {
-                        print("Bid Add"),
-                      itemPriceController.clear()
+                      controller: itemPriceController,
+                      keyboardType: TextInputType.number,
+                      textInputAction: TextInputAction.next,
+                      //maxLength: 11,
+                      validator: (value){
+                        if(value == null || value.isEmpty){
+                          return 'Please Enter Amount';
+                        }else{
+                          /*if(value < Min price ){
+                              return null;
+                            }else{
+                              return 'Please Getter Then minimum price ';
+                            }*/
 
-                      });
-                    },
-                    child: Text(
-                      "Bid",
-                      style: TextStyle(color: Colors.white, fontSize: 18),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      primary: kPrimaryColor,
-                      elevation: 3,
-                    ),
-                  ),
-                ),
-                Divider(),
-                SizedBox(
-                  height: 30,
-                ),
-                  Expanded(
-                    child: ListView.builder(
-                        scrollDirection: Axis.vertical,
-                        itemCount: bids.length,
-                        itemBuilder: (_, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(3.0),
-                            child: Card(
-
-                                clipBehavior: Clip.antiAlias,
-                                color: itemCardColor,
-                                elevation: 16,
-                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(5.0),
-
-                                        child: CircleAvatar(
-                                          backgroundImage: NetworkImage("${bids[index]["userPhoto"]}"),
-                                        )
-                                      ),
-                                      SizedBox(
-                                        height: 20,
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(5.0),
-
-                                        child: Text(
-                                          "${bids[index]["userName"]}",
-                                          style: TextStyle(color: textColor1.withOpacity(1.0),
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 25
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 30,
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(5.0),
-                                        child: Text(
-                                            "${bids[index]["price"].toString()}"" Tk",
-                                          style: TextStyle(color: textColor1, fontSize: 25),
-                                        ),
-                                      ),
-
-                                    ],
-                                  ),
-                            ),
+                          return null;
+                        }
+                      },
+                      decoration: InputDecoration(
+                          hintText: 'Enter Ammount',
+                          hintStyle: TextStyle(
+                              fontSize: 10,
+                              color: textColor1
+                          ),
+                          enabledBorder: const OutlineInputBorder(
+                            // width: 0.0 produces a thin "hairline" border
+                            borderSide: const BorderSide(color: Colors.lightBlueAccent, width: 0.0,),
+                            borderRadius: BorderRadius.all(Radius.circular(10.0),),
+                          ),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(10.0))
                           )
-                          //
-                              ;
-                        }),
-                  ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    SizedBox(
+                      width: 300,
+                      height: 30,
+                      child: ElevatedButton(
+                        // onPressed: () {
+                        //   final isValid = _keyForm.currentState!.validate();
+                        //   if (!isValid==true) {
+                        //     print("Please Input Something ");
+                        //   }
+                        //   else
+                        //   {
+                        //     addBid().then((value){
+                        //       itemPriceController.clear();
+                        //     });
+                        //
+                        //   }
+                        //   _keyForm.currentState!.save();
+                        //
+                        // },
+                        onPressed: (){
+                          addBid().then((value) => {
+                            print("Bid Add"),
+                          itemPriceController.clear()
+
+                          });
+                        },
+                        child: Text(
+                          "Bid",
+                          style: TextStyle(color: Colors.white, fontSize: 10),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          primary: kPrimaryColor,
+                          elevation: 10,
+                        ),
+                      ),
+                    ),
+                    Divider(),
+                    SizedBox(
+                      height: 10,
+                    ),
+                      Expanded(
+                        child: ListView.builder(
+                            scrollDirection: Axis.vertical,
+                            itemCount: bids.length,
+                            itemBuilder: (_, index) {
+                              return Padding(
+                                padding: const EdgeInsets.all(3.0),
+                                child: Card(
+
+                                    clipBehavior: Clip.antiAlias,
+                                    color: itemCardColor,
+                                    elevation: 16,
+                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.all(3.0),
+
+                                            child: CircleAvatar(
+                                              backgroundImage: NetworkImage("${bids[index]["userPhoto"]}"),
+                                            )
+                                          ),
+                                          SizedBox(
+                                            height: 50,
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.all(5.0),
+
+                                            child: Text(
+                                              "${bids[index]["userName"]}",
+                                              style: TextStyle(color: textColor1.withOpacity(1.0),
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 15
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 30,
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.all(5.0),
+                                            child: Text(
+                                                "${bids[index]["price"].toString()}"" Tk",
+                                              style: TextStyle(color: textColor1, fontSize: 15),
+                                            ),
+                                          ),
+
+                                        ],
+                                      ),
+                                ),
+                              )
+                              //
+                                  ;
+                            }),
+                      ),
 
 
 
-              ],
+                  ],
+                ),
             ),
-          )),
+          ),
     );
   }
 }

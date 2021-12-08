@@ -69,8 +69,8 @@ class _AddProoductScreenState extends State<AddProoductScreen> {
                     Container(
                       child: InkWell(
                         child: CircleAvatar(
-                          radius: 100,
-                          backgroundImage: NetworkImage("null"),
+                          radius: 60,
+                          backgroundImage: NetworkImage("https://picsum.photos/200"),
                         ),
                       )
                     ),
