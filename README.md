@@ -14,7 +14,7 @@ Auction App like eBay. Use firebase auth users can signin using their gmail acco
 ![9](https://user-images.githubusercontent.com/89854906/145271802-dcb5f521-b2eb-466e-aec5-22bce0e0fd07.jpg)
 # APK file
 
-- main Root ( app-release.apk)
+- https://drive.google.com/file/d/1PTB8ALXCrV8zBOQ7YF9xuNwNEur1wC7e/view?usp=sharing
 
 
 
